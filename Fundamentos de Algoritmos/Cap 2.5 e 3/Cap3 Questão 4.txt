@@ -1,0 +1,24 @@
+; Projeto de Algoritmos (2.5 e 3)
+; Yasmin Katerine Beer Zebrowski
+; Questão 4
+
+(check-expect(cvm 10 5 4 2)2.5)
+(check-expect(cvm 72 60 0 0.5)-24)
+
+
+;Definindo função calcula-velocidade-média, que deve receber 4 entradas:
+; pi = posição inicial
+; pf = posição final
+; ti = tempo inicial
+; tf = tempo final
+
+(define (cvm pi pf ti tf)
+  
+(/ (- pf pi) (- tf ti) )
+  
+ )
+
+;Observação: tf e ti devem ser diferentes entre si para que exista coerência com a vida real (o tempo não pára) e, assim, não haja divisão por zero. Além disso, como a variação de tempo sempre é positiva, obtendo um resultado negativo indicará a direção do movimento do veículo, dado que a velocidade média e a posição são grandezas vetoriais.
+
+;Imprime resposta
+(cvm 72 60 0 0.5)

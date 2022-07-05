@@ -1,0 +1,37 @@
+; Projeto de Algoritmos (2.5 e 3)
+; Yasmin Katerine Beer Zebrowski
+; Questão 3
+
+(check-expect(valor-final 12 12 0 0)144)
+(check-expect(valor-final 8.4 12 50 33)67.032)
+
+;Define função valor-final que recebe 4 entradas, onde desconto e lucro são percentuais
+;Será usada a fórmula valor-final = valor-unidade*(1+(lucro/100))*quantidade*(1-(desconto/100))
+
+(define (valor-final valor-unidade quantidade desconto lucro)
+  
+ (* (* (* valor-unidade (+ 1 (/ lucro 100))) quantidade) (- 1 (/ desconto 100)))
+  
+  )
+
+;Aplica a função e suas entradas.
+(valor-final 8.4 12 50 33)
+
+;Agora descobriremos qual a percentagem máxima de desconto para que não haja prejuízo.
+
+;Sabemos que o valor dos produtos sem lucro e sem desconto será de 100.8 conforme entradas abaixo.
+
+(valor-final 8.4 12 0 0)
+
+;Portanto, qualquer valor abaixo desse trará prejuízo à loja.
+
+;Agora verificamos quais percentagens corespondem ao prejuízo.
+
+(valor-final 8.4 12 0 33)
+(valor-final 8.4 12 5 33)
+(valor-final 8.4 12 10 33)
+(valor-final 8.4 12 15 33)
+(valor-final 8.4 12 20 33)
+(valor-final 8.4 12 25 33)
+
+;Concluímos então que um desconto maior ou igual a 25% trará prejuízo a loja.

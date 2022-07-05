@@ -1,0 +1,23 @@
+; Projeto de Algoritmos (2.5 e 3)
+; Yasmin Katerine Beer Zebrowski
+; Questão 1
+
+(check-expect(calcula-hipotenusa 3 4)5)
+(check-expect(calcula-hipotenusa 8 15)17)
+
+;Função que espera duas entradas para os catetos
+(define (calcula-hipotenusa b c)
+  (sqrt
+    (+ (expt b 2) (expt c 2)) 
+   )
+)
+
+;Imprime resposta
+(calcula-hipotenusa 1 1)
+
+
+
+
+
+
+

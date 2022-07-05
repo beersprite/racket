@@ -1,0 +1,19 @@
+; Projeto de Algoritmos (2.5 e 3)
+; Yasmin Katerine Beer Zebrowski
+; Questão 2
+
+(check-expect(csl 110 15.50 11)1517.45)
+(check-expect(csl 10 10 50)50)
+
+
+;Definindo função calcula salário líquido, que deve receber 3 entradas.
+
+(define (csl h v i)
+  
+ (- (* h v) (/ (* (* h v) i) 100))
+  
+ )
+
+
+;Imprime resposta
+(csl 110 15.50 11)

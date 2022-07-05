@@ -1,0 +1,198 @@
+;; Projeto de Algoritmos (2.5 e 3)
+;; Yasmin Katerine Beer Zebrowski
+;; Turma D
+
+
+
+;; Questão 1
+
+;; Contrato:
+;;	calcula-hipotenusa : número número -> número
+;; Objetivo: Calcula a hipoteusa, dados o cateto oposto e o cateto adjacente em qualquer ordem.
+;; Exemplo: (calcula-hipotenusa 3 4) deve produzir 5
+
+(check-expect(calcula-hipotenusa 3 4)5)
+(check-expect(calcula-hipotenusa 8 15)17)
+
+;; Definição (cabeçalho mais corpo):
+(define (calcula-hipotenusa b c)
+  (sqrt
+    (+ (expt b 2) (expt c 2)) 
+   )
+)
+
+;; Testes
+(calcula-hipotenusa 8 15)
+
+;; Valor esperado
+;; 17
+
+
+
+---------------------------------
+
+
+
+;; Questão 2
+
+;; Contrato:
+;;	csl : número número número -> número
+;; Objetivo: Calcula salário líquido, que deve receber as entradas
+;;	h: quantidade de horas trabalhadas
+;; 	v: valor monetário por hora trabalhada
+;;	i: imposto (em percentagem)
+;; Exemplo: (csl 10 10 50) deve produzir 50
+
+(check-expect(csl 110 15.50 11)1517.45)
+(check-expect(csl 10 10 50)50)
+
+
+;; Definição (cabeçalho mais corpo):
+
+(define (csl h v i)
+  
+ (- (* h v) (/ (* (* h v) i) 100))
+  
+ )
+
+
+;; Testes
+(csl 110 15.50 11)
+
+;; Valor esperado
+;; 1517.45
+
+
+
+---------------------------------
+
+
+
+;; Questão 3
+
+;; Contrato:
+;;	valor-final : número número número número -> número
+;; Objetivo: Calcula valor final para vendas de uma loja, dadas as entradas:
+;;	valor-unidade: valor por unidade do produto
+;;	quantidade: quantidade do produto
+;;	desconto: desconto do valor final em percentagem
+;;	lucro: lucro sobre produto em percentagem
+;; Exemplo: (valor-final 12 12 0 0) deve produzir 144
+
+(check-expect(valor-final 12 12 0 0)144)
+(check-expect(valor-final 8.4 12 50 33)67.032)
+
+
+;; Será usada a fórmula valor-final = valor-unidade*(1+(lucro/100))*quantidade*(1-(desconto/100))
+;; Definição (cabeçalho mais corpo)
+(define (valor-final valor-unidade quantidade desconto lucro)
+  
+ (* (* (* valor-unidade (+ 1 (/ lucro 100))) quantidade) (- 1 (/ desconto 100)))
+  
+  )
+
+
+;; Testes e solução do problema
+
+;; Aplica a função e suas entradas.
+(valor-final 8.4 12 50 33)
+
+;; Descobriremos qual a percentagem máxima de desconto para que não haja prejuízo.
+;; Sabemos que o valor dos produtos sem lucro e sem desconto será de 100.8 conforme entradas abaixo.
+
+(valor-final 8.4 12 0 0)
+
+;; Portanto, qualquer valor abaixo desse trará prejuízo à loja.
+
+;; Agora verificamos quais percentagens corespondem ao prejuízo.
+
+(valor-final 8.4 12 0 33)
+(valor-final 8.4 12 5 33)
+(valor-final 8.4 12 10 33)
+(valor-final 8.4 12 15 33)
+(valor-final 8.4 12 20 33)
+(valor-final 8.4 12 25 33)
+
+;; Concluímos então que um desconto maior ou igual a 25% trará prejuízo a loja.
+
+
+
+---------------------------------
+
+
+
+;; Questão 4
+
+;; Contrato:
+;;	calcula-velocidade-media : número número número número -> número
+;; Objetivo: Calcula velocidade média, dadas as entradas:
+;;	pi: posição inicial
+;;	pf: posição final
+;;	ti: tempo inicial
+;;	tf: tempo final
+;; Exemplo: (cvm 10 5 4 2) deve produzir 2.5
+
+
+(check-expect(cvm 10 5 4 2)2.5)
+(check-expect(cvm 72 60 0 0.5)-24)
+
+
+;; Definição (cabeçalho mais corpo):
+
+(define (cvm pi pf ti tf)
+  
+(/ (- pf pi) (- tf ti) )
+  
+ )
+
+;; Observação: tf e ti devem ser diferentes entre si para que exista coerência com a vida real (o tempo não pára)
+;; e, assim, não haja divisão por zero.
+;; Além disso, como a variação de tempo sempre é positiva, obtendo um resultado negativo indicará a direção do
+;; movimento do veículo, dado que a velocidade média e a posição são grandezas vetoriais.
+
+;; Testes
+(cvm 72 60 0 0.5)
+
+;; Valor esperado
+;; -24
+
+
+
+---------------------------------
+
+
+
+;; Questão 5
+
+;; Contrato:
+;;	calcula-posicao-final : número número número número -> número
+;; Objetivo: Calcula velocidade média, dadas as entradas:
+;;	v: velocidade média
+;;	pi: posição inicial
+;;	ti: tempo inicial
+;; 	tf: tempo final
+;; Exemplo: (cpf -24 72 0 0.5) deve produzir 60
+
+
+(check-expect(cpf 2.5 10 4 2)5)
+(check-expect(cpf -24 72 0 0.5)60)
+
+
+;; Definição (cabeçalho mais corpo):
+
+(define (cpf v pi ti tf)
+  
+(+ (* v (- tf ti)) pi)
+  
+ )
+
+;; Observação: tf e ti devem ser diferentes entre si para que exista coerência com a vida real (o tempo não pára)
+;; e, assim, não haja divisão por zero.
+;; Além disso, como a variação de tempo sempre é positiva, obtendo um resultado negativo indicará a direção do
+;; movimento do veículo, dado que a velocidade média e a posição são grandezas vetoriais.
+
+;; Testes
+(cpf -24 72 0 0.5)
+
+;; Valor esperado
+;; 60

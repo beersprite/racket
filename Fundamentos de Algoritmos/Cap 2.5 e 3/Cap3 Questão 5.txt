@@ -1,0 +1,24 @@
+; Projeto de Algoritmos (2.5 e 3)
+; Yasmin Katerine Beer Zebrowski
+; Questão 5
+
+(check-expect(cpf 2.5 10 4 2)5)
+(check-expect(cpf -24 72 0 0.5)60)
+
+
+;Definindo função calcula-posição-final, que deve receber 4 entradas:
+; v = velocidade média
+; pi = posição inicial
+; ti = tempo inicial
+; tf = tempo final
+
+(define (cpf v pi ti tf)
+  
+(+ (* v (- tf ti)) pi)
+  
+ )
+
+;Observação: tf e ti devem ser diferentes entre si para que exista coerência com a vida real (o tempo não pára) e, assim, não haja divisão por zero. Além disso, como a variação de tempo sempre é positiva, obtendo um resultado negativo indicará a direção do movimento do veículo, dado que a velocidade média e a posição são grandezas vetoriais.
+
+;Imprime resposta
+(cpf -24 72 0 0.5)

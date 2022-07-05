@@ -1,0 +1,24 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname |rasgando a bunda|) (read-case-sensitive #t) (teachpacks ((lib "image.rkt" "teachpack" "2htdp"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "image.rkt" "teachpack" "2htdp")) #f)))
+(define-struct Aluno(nome matricula curso InstEnsino-nome))
+
+
+(define-struct InstEnsino(nome anofundacao))
+
+
+(define (mesmaInstituição? a b inst)
+  (cond
+    [(string=? (Aluno-InstEnsino 'a) (Aluno-InstEnsino 'b))"Sim"]
+    [else "Não"]
+    )
+  )
+
+
+;(mesmaInstituição? a b UFRGS
+
+(define aluno1(make-Aluno 'a 121 'bio 'ufrgs))
+(define ufrgs(make-InstEnsino 'ufrgs 123))
+
+(make-Aluno 'a 12 'bio 'ufrgs)
+(make-Aluno 'b 12 'bio 'ufrgs)
